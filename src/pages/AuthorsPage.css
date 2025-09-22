@@ -1,0 +1,555 @@
+/* Authors Page CSS - Clean Responsive Design */
+
+.ijaems-authors-container {
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 20px 0;
+  margin-top: 2%;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ijaems-content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Main Header Card */
+.ijaems-page-header {
+  background-color: rgba(37, 150, 190, 1);
+  border-radius: 20px;
+  padding: 60px 40px;
+  margin: 30px 0;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(37, 150, 190, 0.15);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.ijaems-page-header::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background-color: rgba(171, 219, 227, 0.3);
+  clip-path: polygon(0 100%, 100% 20%, 100% 100%);
+}
+
+.ijaems-page-header:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(37, 150, 190, 0.2);
+}
+
+.ijaems-main-title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 2;
+}
+
+.ijaems-page-subtitle {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 400;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.ijaems-page-subtitle::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 2px;
+}
+
+/* Introduction Notice Card */
+.ijaems-intro-section {
+  margin: 40px 0;
+}
+
+.ijaems-notice-box {
+  background-color: rgba(171, 219, 227, 0.15);
+  border: 2px solid rgba(171, 219, 227, 0.5);
+  border-radius: 16px;
+  padding: 30px 40px;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(37, 150, 190, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.ijaems-notice-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(37, 150, 190, 0.12);
+  border-color: rgba(37, 150, 190, 0.4);
+  background-color: rgba(171, 219, 227, 0.2);
+}
+
+.ijaems-notice-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background-color: rgba(37, 150, 190, 1);
+  border-radius: 0 3px 3px 0;
+}
+
+.ijaems-notice-box::after {
+  content: '📋';
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  font-size: 2rem;
+  opacity: 0.7;
+}
+
+.ijaems-notice-text {
+  color: #2d3748;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.7;
+  position: relative;
+  z-index: 2;
+}
+
+/* Guidelines Section Header Card */
+.ijaems-guidelines-section {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 50px 45px;
+  margin: 40px 0;
+  box-shadow: 0 8px 25px rgba(37, 150, 190, 0.08);
+  border: 1px solid rgba(171, 219, 227, 0.3);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.ijaems-guidelines-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(37, 150, 190, 0.12);
+  border-color: rgba(37, 150, 190, 0.2);
+}
+
+/* Section Title */
+.ijaems-section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgba(37, 150, 190, 1);
+  margin-bottom: 25px;
+  position: relative;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.ijaems-section-title::before {
+  content: '';
+  width: 6px;
+  height: 60px;
+  background-color: rgba(37, 150, 190, 1);
+  border-radius: 3px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(37, 150, 190, 0.2);
+}
+
+.ijaems-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 21px;
+  width: 100px;
+  height: 4px;
+  background-color: rgba(171, 219, 227, 1);
+  border-radius: 2px;
+}
+
+.ijaems-intro-text {
+  font-size: 1.2rem;
+  color: #64748b;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+
+/* Guideline Cards */
+.ijaems-guideline-block {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 35px 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 6px 20px rgba(37, 150, 190, 0.08);
+  border: 2px solid rgba(171, 219, 227, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ijaems-guideline-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background-color: rgba(37, 150, 190, 1);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+  transform-origin: bottom;
+}
+
+.ijaems-guideline-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(37, 150, 190, 0.15);
+  border-color: rgba(37, 150, 190, 0.4);
+}
+
+.ijaems-guideline-block:hover::before {
+  transform: scaleY(1);
+}
+
+.ijaems-guideline-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ijaems-guideline-title::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background-color: rgba(37, 150, 190, 1);
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(37, 150, 190, 0.2);
+}
+
+.ijaems-guideline-text {
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Sub-guidelines */
+.ijaems-sub-guideline {
+  background-color: rgba(171, 219, 227, 0.1);
+  border-radius: 12px;
+  padding: 25px;
+  margin: 20px 0;
+  border-left: 4px solid rgba(171, 219, 227, 0.8);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.ijaems-sub-guideline:hover {
+  border-left-color: rgba(37, 150, 190, 1);
+  background-color: rgba(171, 219, 227, 0.15);
+  transform: translateX(8px);
+}
+
+.ijaems-sub-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ijaems-sub-title::before {
+  content: '▶';
+  color: rgba(37, 150, 190, 1);
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.ijaems-sub-guideline:hover .ijaems-sub-title::before {
+  transform: translateX(5px);
+}
+
+/* Enhanced card effects */
+.ijaems-guideline-block:nth-child(even) {
+  background: rgba(171, 219, 227, 0.03);
+}
+
+.ijaems-guideline-block:nth-child(even):hover {
+  background: #ffffff;
+}
+
+/* Animation for page load */
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ijaems-page-header {
+  animation: slideInFromTop 0.6s ease forwards;
+}
+
+.ijaems-intro-section {
+  animation: slideInFromTop 0.6s ease forwards;
+  animation-delay: 0.1s;
+}
+
+.ijaems-guidelines-section {
+  animation: slideInFromTop 0.6s ease forwards;
+  animation-delay: 0.2s;
+}
+
+/* Focus states for accessibility */
+.ijaems-guideline-block:focus-within {
+  outline: 2px solid rgba(37, 150, 190, 0.5);
+  outline-offset: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .ijaems-content-wrapper {
+    max-width: 900px;
+    padding: 0 18px;
+  }
+  
+  .ijaems-guidelines-section {
+    padding: 40px 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ijaems-content-wrapper {
+    padding: 0 15px;
+  }
+  
+  .ijaems-page-header {
+    padding: 40px 25px;
+    margin: 20px 0;
+  }
+  
+  .ijaems-main-title {
+    font-size: 2.2rem;
+  }
+  
+  .ijaems-page-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .ijaems-guidelines-section {
+    padding: 35px 25px;
+  }
+  
+  .ijaems-guideline-block {
+    padding: 25px 20px;
+  }
+  
+  .ijaems-section-title {
+    font-size: 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .ijaems-section-title::before {
+    width: 40px;
+    height: 6px;
+  }
+  
+  .ijaems-section-title::after {
+    left: 0;
+    width: 80px;
+  }
+  
+  .ijaems-notice-box {
+    padding: 25px 30px;
+  }
+  
+  .ijaems-notice-box::after {
+    font-size: 1.5rem;
+    top: 20px;
+    right: 25px;
+  }
+  
+  .ijaems-sub-guideline {
+    padding: 20px;
+    margin: 15px 0;
+  }
+  
+  .ijaems-intro-text {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ijaems-content-wrapper {
+    padding: 0 12px;
+  }
+  
+  .ijaems-main-title {
+    font-size: 1.9rem;
+  }
+  
+  .ijaems-page-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .ijaems-section-title {
+    font-size: 1.7rem;
+  }
+  
+  .ijaems-page-header {
+    padding: 30px 20px;
+    border-radius: 16px;
+  }
+  
+  .ijaems-guidelines-section {
+    padding: 25px 20px;
+    border-radius: 16px;
+  }
+  
+  .ijaems-notice-box {
+    padding: 20px 25px;
+    border-radius: 12px;
+  }
+  
+  .ijaems-notice-box::after {
+    font-size: 1.2rem;
+    top: 18px;
+    right: 20px;
+  }
+  
+  .ijaems-guideline-block {
+    padding: 20px 15px;
+    border-radius: 12px;
+  }
+  
+  .ijaems-guideline-title {
+    font-size: 1.2rem;
+  }
+  
+  .ijaems-guideline-text {
+    font-size: 0.95rem;
+  }
+  
+  .ijaems-sub-title {
+    font-size: 1.1rem;
+  }
+  
+  .ijaems-intro-text {
+    font-size: 1rem;
+  }
+  
+  .ijaems-notice-text {
+    font-size: 1rem;
+  }
+  
+  .ijaems-sub-guideline {
+    padding: 18px;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .ijaems-content-wrapper {
+    padding: 0 10px;
+  }
+  
+  .ijaems-main-title {
+    font-size: 1.7rem;
+  }
+  
+  .ijaems-page-subtitle {
+    font-size: 1rem;
+  }
+  
+  .ijaems-section-title {
+    font-size: 1.5rem;
+  }
+  
+  .ijaems-page-header {
+    padding: 25px 15px;
+  }
+  
+  .ijaems-guidelines-section {
+    padding: 20px 15px;
+  }
+  
+  .ijaems-notice-box {
+    padding: 18px 20px;
+  }
+  
+  .ijaems-guideline-block {
+    padding: 18px 12px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .ijaems-authors-container {
+    background: white !important;
+  }
+  
+  .ijaems-page-header {
+    background: rgba(37, 150, 190, 1) !important;
+    color: white !important;
+    box-shadow: none !important;
+  }
+  
+  .ijaems-section-title {
+    color: rgba(37, 150, 190, 1) !important;
+  }
+  
+  .ijaems-guideline-block,
+  .ijaems-guidelines-section,
+  .ijaems-notice-box {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+  
+  .ijaems-page-header::before,
+  .ijaems-guideline-block::before {
+    display: none !important;
+  }
+}
+
+/* High specificity ensures styles apply correctly */
+body .ijaems-authors-container {
+  background-color: #ffffff !important;
+}
+
+/* Loading animation for guideline blocks */
+.ijaems-guideline-block {
+  animation: slideInFromTop 0.4s ease forwards;
+}
+
+.ijaems-guideline-block:nth-child(1) { animation-delay: 0.1s; }
+.ijaems-guideline-block:nth-child(2) { animation-delay: 0.2s; }
+.ijaems-guideline-block:nth-child(3) { animation-delay: 0.3s; }
+.ijaems-guideline-block:nth-child(4) { animation-delay: 0.4s; }
+.ijaems-guideline-block:nth-child(5) { animation-delay: 0.5s; }

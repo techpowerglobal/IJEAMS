@@ -1,0 +1,435 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Background Image with Light Blur Effect */
+/* Hero Background Blur */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../assets/home.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Blur Effect */
+  filter: blur(8px);         /* increase or decrease intensity */
+  -webkit-filter: blur(8px); /* Safari support */
+
+  transform: scale(1.1);     /* expand slightly to hide edges */
+  z-index: -1;
+}
+
+/* Hero Overlay keeps the text color unchanged */
+.hero-overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: rgba(141, 145, 146, 0.404); /* slightly transparent overlay */
+  backdrop-filter: none; /* remove blur here so text stays crisp */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 1;
+}
+
+/* Hero Content */
+.hero-content {
+  color: #0f0f0f;
+  text-align: center; /* text color stays same */
+}
+
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+
+  /* Smooth Gradient Text */
+background: linear-gradient(
+  90deg,
+  #0d92f4,   /* bright blue */
+  #38b6ff,   /* sky blue */
+  #7ed6df,   /* light aqua */
+  #ffffff,   /* white shimmer (glitter effect) */
+  #38b6ff,   /* sky blue again */
+  #0a74d6    /* deep blue */
+);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+
+  background-size: 300% 300%;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+animation: shimmer 4s linear infinite;
+}
+/* Glitter/Shimmer Animation */
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+
+
+.hero-description {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  font-weight: 400;
+  opacity: 0.95;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+
+/* Info Section */
+.info-section {
+  background: #f8fafc;
+  padding: 5rem 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.info-cards {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: stretch;
+}
+
+/* Card Styles */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(37, 150, 190, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(37, 150, 190, 1);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(37, 150, 190, 0.15);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(37, 150, 190, 1);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.publisher-card h3::before {
+  content: '🏢';
+  font-size: 1.25rem;
+}
+
+.journal-card h3::before {
+  content: '📚';
+  font-size: 1.25rem;
+}
+
+.card-content {
+  color: #4a5568;
+  line-height: 1.7;
+  flex-grow: 1;
+}
+
+.card-content p {
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.card-content p:last-child {
+  margin-bottom: 0;
+}
+
+.card-content strong {
+  color: #1a202c;
+  font-weight: 600;
+}
+
+/* Publisher Card Specific Styling */
+.publisher-card {
+  background: linear-gradient(135deg, rgba(171, 219, 227, 0.05) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.publisher-card .card-content p:nth-child(1) {
+  font-size: 1.1rem;
+  color: rgba(37, 150, 190, 1);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Journal Card Specific Styling */
+.journal-card {
+  background: linear-gradient(135deg, rgba(37, 150, 190, 0.02) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.journal-card .card-content p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.journal-card .card-content p:last-child {
+  border-bottom: none;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tablet Responsive */
+@media (max-width: 1024px) {
+  .hero {
+    height: 90vh;
+    min-height: 500px;
+  }
+
+  .hero-overlay {
+    padding: 1.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .info-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .info-cards {
+    gap: 2.5rem;
+  }
+
+  .card {
+    padding: 2rem;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .hero {
+    height: 80vh;
+    min-height: 450px;
+  }
+
+  .hero-overlay {
+    padding: 1rem;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+    line-height: 1.3;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .info-section {
+    padding: 3rem 1rem;
+  }
+
+  .info-cards {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 100%;
+  }
+
+  .card {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .card-content p {
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .journal-card .card-content p {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 0.75rem 0;
+  }
+
+  .publisher-card .card-content p:nth-child(1) {
+    font-size: 1rem;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 480px) {
+  .hero {
+    height: 70vh;
+    min-height: 400px;
+  }
+
+  .hero-overlay {
+    padding: 0.75rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .info-section {
+    padding: 2.5rem 0.75rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .card-content p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+  .hero-content {
+    max-width: 1100px;
+  }
+
+  .hero-content h1 {
+    font-size: 4rem;
+  }
+
+  .hero-description {
+    font-size: 1.3rem;
+  }
+
+  .info-section {
+    padding: 6rem 2rem;
+  }
+
+  .info-cards {
+    max-width: 1400px;
+    gap: 4rem;
+  }
+
+  .card {
+    padding: 3rem;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content {
+    animation: none;
+  }
+  
+  .card {
+    transition: none;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+}
+
+/* Focus States for Accessibility */
+.card:focus-within {
+  outline: 2px solid rgba(37, 150, 190, 0.5);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .hero-overlay {
+    background: rgba(37, 150, 190, 0.95);
+  }
+  
+  .card {
+    border: 2px solid rgba(37, 150, 190, 0.3);
+  }
+}

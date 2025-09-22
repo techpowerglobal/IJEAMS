@@ -1,0 +1,403 @@
+/* AimScope.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.jaems-aim-scope-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 5%;
+}
+
+.jaems-content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Header Styles with Freepik Template Inspiration */
+.jaems-page-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  background: rgba(37, 150, 190, 0.9);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(37, 150, 190, 0.3);
+  overflow: hidden;
+}
+
+.jaems-page-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(171, 219, 227, 0.2);
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+
+.jaems-page-header::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -30%;
+  width: 80%;
+  height: 80%;
+  background: rgba(171, 219, 227, 0.1);
+  border-radius: 50%;
+}
+
+.jaems-main-title {
+  font-size: 3.5rem;
+  color: white;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: 2px;
+}
+
+.jaems-title-underline {
+  width: 100px;
+  height: 4px;
+  background: rgba(171, 219, 227, 1);
+  margin: 0 auto;
+  border-radius: 2px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Headers */
+.jaems-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+ 
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.jaems-section-title {
+  font-size: 2.5rem;
+  color: rgb(17, 17, 17);
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.jaems-section-icon {
+  font-size: 2rem;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Content Cards with Background Images */
+.jaems-content-card {
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="80" cy="40" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="40" cy="80" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>'), 
+              linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+  background-size: 200px 200px, cover;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 
+    0 20px 40px rgba(37, 150, 190, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.jaems-content-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(37, 150, 190, 0.6), rgba(171, 219, 227, 0.8), rgba(37, 150, 190, 0.6));
+}
+
+.jaems-aim-text,
+.jaems-scope-intro {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #2c3e50;
+  text-align: justify;
+  font-weight: 400;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+/* Engineering Fields Grid */
+.jaems-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.jaems-field-card {
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="0.5" fill="%23ffffff" opacity="0.3"/></pattern></defs><rect width="100%" height="100%" fill="url(%23dots)"/></svg>'),
+              linear-gradient(135deg, rgba(37, 150, 190, 0.9) 0%, rgba(37, 150, 190, 0.7) 100%);
+  background-size: 50px 50px, cover;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 
+    0 15px 30px rgba(37, 150, 190, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.jaems-field-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(171, 219, 227, 0.1);
+  border-radius: 50%;
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
+}
+
+.jaems-field-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 25px 50px rgba(37, 150, 190, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.jaems-field-card:hover::before {
+  transform: rotate(45deg) scale(1.2);
+}
+
+.jaems-field-title {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+.jaems-topics-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.jaems-topic-tag {
+  background: rgba(255, 255, 255, 0.9);
+  color: rgba(37, 150, 190, 1);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.2s ease;
+}
+
+.jaems-topic-tag:hover {
+  background: rgba(171, 219, 227, 0.9);
+  color: rgba(37, 150, 190, 1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Section Spacing */
+.jaems-aim-section,
+.jaems-scope-section {
+  margin-bottom: 4rem;
+}
+
+/* Responsive Design */
+
+/* Tablet Styles */
+@media (max-width: 768px) {
+  .jaems-content-wrapper {
+    padding: 1.5rem 1rem;
+  }
+
+  .jaems-page-header {
+    padding: 2rem 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .jaems-main-title {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+
+  .jaems-section-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem 1rem;
+  }
+
+  .jaems-section-title {
+    font-size: 2rem;
+  }
+
+  .jaems-fields-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .jaems-content-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .jaems-field-card {
+    padding: 1.5rem;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+  .jaems-content-wrapper {
+    padding: 1rem 0.5rem;
+  }
+
+  .jaems-page-header {
+    padding: 1.5rem 1rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+  }
+
+  .jaems-main-title {
+    font-size: 2rem;
+    letter-spacing: 0.5px;
+  }
+
+  .jaems-section-header {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .jaems-section-title {
+    font-size: 1.5rem;
+  }
+
+  .jaems-section-icon {
+    font-size: 1.5rem;
+  }
+
+  .jaems-content-card {
+    padding: 1.5rem 1rem;
+    border-radius: 15px;
+  }
+
+  .jaems-aim-text,
+  .jaems-scope-intro {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .jaems-field-card {
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+  }
+
+  .jaems-field-title {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .jaems-topic-tag {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .jaems-fields-grid {
+    gap: 1rem;
+  }
+
+  .jaems-aim-section,
+  .jaems-scope-section {
+    margin-bottom: 2.5rem;
+  }
+}
+
+/* Ultra-small screens */
+@media (max-width: 320px) {
+  .jaems-main-title {
+    font-size: 1.8rem;
+  }
+  
+  .jaems-content-card {
+    padding: 1rem;
+  }
+  
+  .jaems-field-card {
+    padding: 1rem;
+  }
+  
+  .jaems-topics-container {
+    gap: 0.3rem;
+  }
+  
+  .jaems-topic-tag {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Animation for smooth loading */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.jaems-content-card,
+.jaems-field-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Print Styles */
+@media print {
+  .jaems-aim-scope-container {
+    background: white;
+  }
+  
+  .jaems-page-header {
+    background: rgba(37, 150, 190, 0.1);
+    color: black;
+    box-shadow: none;
+  }
+  
+  .jaems-main-title {
+    color: rgba(37, 150, 190, 1);
+  }
+  
+  .jaems-field-card {
+    background: rgba(37, 150, 190, 0.05);
+    box-shadow: none;
+    break-inside: avoid;
+  }
+}
