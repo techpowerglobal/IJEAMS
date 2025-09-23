@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./SubmissionDetails.css";
-
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 const SubmissionDetails = () => {
   const { id } = useParams(); // Get submission id from URL
   const [submission, setSubmission] = useState(null);
@@ -20,7 +20,7 @@ const SubmissionDetails = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch(`http://localhost:5000/api/submissions/details/${id}`, {
+    fetch(`${API_BASE}/api/submissions/details/${id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: token ? `Bearer ${token}` : "",
