@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./CurrentIssue.css";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 const CurrentIssue = () => {
   const [papers, setPapers] = useState([]);
   const [error, setError] = useState("");
@@ -54,7 +54,7 @@ const CurrentIssue = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/submissions/approved")
+     fetch(`${API_BASE}/api/submissions/approved`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
