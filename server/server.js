@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
-
+const path = require("path");
 
 const app = express();
 
@@ -140,6 +140,15 @@ app.use("/uploads", express.static("public/uploads"));
 // ---------- Mount Comments Route ----------
 const commentRoutes = require("./routes/comment");
 app.use("/api/comments", commentRoutes);
+
+
+// Serve static React files
+app.use(express.static(path.join(__dirname, "../build")));
+
+// Catch-all (React Router)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build", "index.html"));
+});
 
 // ---------- Start server ----------
 const PORT = process.env.PORT || 5000;
