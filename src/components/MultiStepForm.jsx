@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./MultiStepForm.css";
-
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 export default function MultiStepForm() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -86,7 +86,7 @@ export default function MultiStepForm() {
         fd.append(key, value);
       });
 
-      const res = await fetch("http://localhost:5000/api/submissions", {
+      const res = await  fetch(`${API_BASE}/api/submissions`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
