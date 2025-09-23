@@ -15,6 +15,7 @@ import "./UserDashboard.css";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import MultiStepForm from "../components/MultiStepForm";
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
 const UserDashboard = () => {
   const [UsersidebarOpen, setUserSidebarOpen] = useState(false);
@@ -40,7 +41,7 @@ const UserDashboard = () => {
   }, []);
 
   const fetchUserSubmissions = (token) => {
-    fetch("http://localhost:5000/api/submissions/mine", {
+    fetch(`${API_BASE}/api/submissions/mine`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => {
@@ -68,7 +69,7 @@ const UserDashboard = () => {
     let unread = 0;
 
     for (const sub of userSubs) {
-      const res = await fetch(`http://localhost:5000/api/comments/${sub._id}`);
+      const res = await  fetch(`${API_BASE}/api/comments/${sub._id}`);
       const data = await res.json();
 
       if (data.success) {
@@ -98,7 +99,7 @@ const UserDashboard = () => {
 
   try {
     const res = await fetch(
-      `http://localhost:5000/api/comments/mark-read/${userEmail}`,
+      `${API_BASE}/api/comments/mark-read/${userEmail}`,
       { method: "PUT" }
     );
     const data = await res.json();
