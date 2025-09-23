@@ -3,7 +3,7 @@ import "./PastIssue.css";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
-
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 const PastIssue = () => {
   const [papers, setPapers] = useState([]);
   const [error, setError] = useState("");
@@ -37,7 +37,7 @@ const PastIssue = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/submissions/approved")
+    fetch(`${API_BASE}/api/submissions/approved`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
