@@ -22,6 +22,10 @@ app.use(
   })
 );
 
+app.get("/", (req, res) => {
+  res.send("✅ API is running. Try /api/register or /api/login");
+});
+
 // ---------- MongoDB connection ----------
 mongoose
   .connect(process.env.MONGO_URI, {
