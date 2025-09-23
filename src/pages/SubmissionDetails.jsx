@@ -63,7 +63,7 @@ const SubmissionDetails = () => {
 
   // Fetch existing comments
   useEffect(() => {
-    fetch(`http://localhost:5000/api/comments/${id}`)
+    fetch(`${API_BASE}/api/comments/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success && Array.isArray(data.comments)) {
@@ -80,7 +80,7 @@ const SubmissionDetails = () => {
 
     setSubmitting(true);
     try {
-      const response = await fetch("http://localhost:5000/api/comments", {
+      const response = await  fetch(`${API_BASE}/api/comments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
