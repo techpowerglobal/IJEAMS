@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 import "./IssueDetails.css";
 
 // ✅ Same volume/issue logic used in PastIssue.js
@@ -34,7 +34,7 @@ const IssueDetails = () => {
   useEffect(() => {
     const fetchPapers = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/submissions/approved");
+        const res = await  fetch(`${API_BASE}/api/submissions/approved`);
         const data = await res.json();
 
         if (data.success) {
