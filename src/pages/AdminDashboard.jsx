@@ -14,7 +14,7 @@ import "./AdminDashboard.css";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
-
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
 const AdminDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -43,7 +43,7 @@ const AdminDashboard = () => {
   }, []);
 
   const fetchUsers = (token) => {
-    fetch("http://localhost:5000/api/users", {
+    fetch(`${API_BASE}/api/users`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -57,7 +57,7 @@ const AdminDashboard = () => {
   };
 
   const fetchSubmissions = (token) => {
-    fetch("http://localhost:5000/api/submissions", {
+    fetch(`${API_BASE}/api/submissions`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -267,7 +267,7 @@ case "submissions":
 
   const updateSubmissionStatus = (id, newStatus) => {
     const token = localStorage.getItem("token");
-    fetch(`http://localhost:5000/api/submissions/${id}/status`, {
+     fetch(`${API_BASE}/api/submissions/${id}/status`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
