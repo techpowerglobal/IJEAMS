@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import "./PaperDetails.css";
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
 const PaperDetails = () => {
   const { id } = useParams();
@@ -11,7 +12,7 @@ const PaperDetails = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/submissions/details/${id}`)
+    fetch(`${API_BASE}/api/submissions/details/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -93,7 +94,7 @@ const PaperDetails = () => {
 
          <div className="download-section">
   <a
-  href={`http://localhost:5000/api/submissions/public/files/${paper.pdfFileId}`}
+  href={`${API_BASE}/api/submissions/public/files/${paper.pdfFileId}`}
   className="btn download-btn"
   download
 >
