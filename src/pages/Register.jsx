@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const API_BASE = "https://ijaems.in/api"; // ✅ Use your live domain
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 const Register = () => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
