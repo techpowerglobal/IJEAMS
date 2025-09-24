@@ -14,10 +14,16 @@ app.use(express.json());
 app.use(
   cors({
     origin: [
-      "http://localhost:5173",
-      "http://127.0.0.1:5173",
-      "http://localhost:3000", // CRA fallback
-    ],
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+  "http://localhost:3000", // CRA fallback
+  "http://72.60.101.69",   // direct IP access
+  "http://ijaems.in",      // your domain
+  "https://ijaems.in",     // https version (after SSL)
+  "http://www.ijaems.in",  // www version
+  "https://www.ijaems.in", // www with https
+],
+
     credentials: true,
   })
 );
