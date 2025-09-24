@@ -54,7 +54,7 @@ const CurrentIssue = () => {
   };
 
   useEffect(() => {
-     fetch(`${API_BASE}/api/submissions/approved`)
+     fetch(`${API_BASE}/submissions/approved`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
