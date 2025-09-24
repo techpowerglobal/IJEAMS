@@ -1,0 +1,80 @@
+.form-container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.step {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.step.active {
+  background: #3498db;
+  color: white;
+}
+
+.step.done {
+  background: #2ecc71;
+  color: white;
+}
+
+.line {
+  flex: 1;
+  height: 3px;
+  background: #ddd;
+}
+
+.form-step {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-step input,
+.form-step textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  padding: 10px 20px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2980b9;
+}

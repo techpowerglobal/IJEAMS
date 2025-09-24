@@ -1,0 +1,114 @@
+/* ============================
+   Article Processing Charges Page
+   ============================ */
+
+/* Container */
+.ijams-apc {
+  font-family: "Georgia", serif;
+  color: #f5f6fa;
+  margin-top: 3%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.ijams-apc__header {
+   background-color: rgba(37, 150, 190, 1);
+
+  padding: 4rem 1rem;
+  text-align: center;
+  
+  border-bottom: 4px solid #f1c40f;
+}
+
+.ijams-apc__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-left: 300px;
+  margin-bottom: 0.5rem;
+}
+
+.ijams-apc__subtitle {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  margin-left: 300px;
+}
+
+/* Content */
+.ijams-apc__content {
+  flex: 1;
+  padding: 3rem 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.ijams-apc__container {
+  max-width: 900px;
+  width: 100%;
+}
+
+.ijams-apc__container--narrow {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.ijams-apc__section-title {
+  font-size: 1.8rem;
+  color: #f1c40f;
+  margin-bottom: 1rem;
+  border-left: 4px solid #f1c40f;
+  padding-left: 0.8rem;
+}
+
+.ijams-apc__lead {
+  font-size: 1.1rem;
+  color: #030303;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+/* Card */
+.ijams-apc__card {
+  background: #1e2b4a;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.ijams-apc__card:hover {
+  transform: translateY(-5px);
+}
+
+.ijams-apc__card-title {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.ijams-apc__list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.ijams-apc__list li {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #dcdde1;
+}
+
+.ijams-apc__list strong {
+  color: #f39c12;
+}
+
+/* Footer note */
+
+.ijams-apc__footer-text {
+  font-size: 0.95rem;
+  color: #aab7c4;
+  margin: 0;
+}
