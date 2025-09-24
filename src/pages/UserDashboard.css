@@ -1,0 +1,899 @@
+/* ==============================
+   USER DASHBOARD STYLES
+   ============================== */
+
+/* Main Container */
+.user-dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  /* background: #f7f8fa; */
+  position: relative;
+
+}
+
+
+/* Sidebar */
+.user-sidebar {
+  
+   position: fixed;
+  top: 70px;
+  left: 0;
+  height: calc(100% - 30px); /* subtract footer height if needed */
+  width: 240px;
+   background: linear-gradient(135deg, rgba(37, 150, 190, 1) 0%, rgba(30, 120, 152, 1) 50%, rgba(25, 95, 121, 1) 100%);
+  color: white;
+  padding-top: 20px;
+  z-index: 1000;
+  overflow-y: auto; 
+}
+
+/* Main content */
+/* .user-main-content {
+  margin-left: 240px;
+  margin-top: 60px; 
+  padding: 20px;
+} */
+
+
+/* Main content shifted to right of sidebar */
+.user-main-content {
+  margin-left: 240px;
+  margin-top: 60px; 
+  padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+
+.user-sidebar.sidebar-open {
+  transform: translateX(0);
+}
+
+.user-sidebar-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-sidebar-header h1 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.user-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.user-nav-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+}
+
+.user-nav-item-active {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+}
+
+.user-nav-item-logout {
+  color: #ff6b6b;
+  margin-top: auto;
+}
+
+/* Mobile Overlay */
+.user-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 900;
+}
+
+/* Mobile Menu Button */
+.user-mobile-menu-toggle {
+  display: none;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+/* Main Content */
+.user-main-content {
+  flex-grow: 1;
+
+  padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.user-content-header h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.user-content-body {
+  /* background: #fff; */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Stats Grid */
+.user-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.user-stat-card {
+  background: #f0f4ff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.user-stat-card h3 {
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.stat-number {
+  font-size: 22px;
+  font-weight: bold;
+  color: #2575fc;
+}
+
+.stat-status {
+  font-size: 18px;
+  color: #2ecc71;
+  font-weight: bold;
+}
+
+/* Tables */
+.user-table {
+  display: grid;
+  gap: 10px;
+}
+
+.table-header,
+.table-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.table-header {
+  font-weight: bold;
+  background: #f0f0f0;
+}
+
+.status-active {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+/* Submissions */
+.user-submissions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.user-submission-item {
+  background: #eef2ff;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.submission-status {
+  font-weight: bold;
+}
+
+.submission-status.pending {
+  color: #f39c12;
+}
+
+.submission-status.approved {
+  color: #27ae60;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .user-sidebar {
+    transform: translateX(-100%);
+  }
+
+  .user-sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  .user-main-content {
+    margin-left: 0;
+  }
+
+  .user-mobile-menu-toggle {
+    display: block;
+  }
+}
+
+/* submissions-table styling */
+.submissions-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.submissions-table thead {
+  background-color: rgba(37, 150, 190, 1); /* Gradient or solid primary color */
+  color: white;
+}
+
+.submissions-table th,
+.submissions-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.submissions-table th {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.submissions-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.submissions-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.submissions-table tbody tr:hover {
+  background-color: #f1f5f9;
+  cursor: pointer;
+}
+
+.submissions-table td {
+  font-size: 14px;
+  color: #333;
+}
+
+.stat-status.approved {
+  color: green;
+  font-weight: bold;
+}
+
+.stat-status.rejected {
+  color: red;
+  font-weight: bold;
+}
+
+.stat-status.submitted {
+  color: orange;
+  font-weight: bold;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+
+
+
+
+
+/* UserDashboard.css */
+
+/* Main Container */
+.user-dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  /* background-color: #f8fafc; */
+}
+
+/* Mobile Menu Toggle */
+.user-mobile-menu-toggle {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1001;
+  background: rgba(37, 150, 190, 1);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.user-mobile-menu-toggle:hover {
+  background: #4f46e5;
+  transform: translateY(-1px);
+}
+
+
+/* UserDashboard.css */
+
+/* Main Dashboard Container */
+/* UserDashboard.css */
+
+/* Main Dashboard Container */
+.user-dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  /* background-color: #f8fafc; */
+}
+
+/* Mobile Menu Toggle */
+.user-mobile-menu-toggle {
+  display: none;
+  position: fixed;
+  top: 80px;
+  left: 20px;
+  z-index: 1001;
+  /* background: #fff; */
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+.user-mobile-menu-toggle:hover {
+  background: #f1f5f9;
+}
+
+
+
+/* Main Content Area */
+
+
+.user-content-header {
+  margin-bottom: 2rem;
+}
+
+.user-content-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+  
+}
+
+.user-content-body {
+  
+  border-radius: 5px;
+  padding: 2rem;
+  /* box-shadow: 0 1px 3px rgba(0,0,0,0.1); */
+}
+
+/* Dashboard Overview Styles */
+.user-tab-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+}
+
+.user-tab-content p {
+  color: #64748b;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Stats Grid */
+.user-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Stat Cards with Circular Progress */
+.user-stat-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2.rem 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border: none;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.user-stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.user-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 20px 20px 0 0;
+}
+
+/* Card header with icon and title */
+.stat-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.user-stat-card h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Circular Progress Container */
+.circular-progress {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1rem;
+}
+
+.circular-progress svg {
+  width: 120px;
+  height: 120px;
+  transform: rotate(-90deg);
+}
+
+.progress-circle-bg {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+
+.progress-circle {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 314;
+  stroke-dashoffset: 314;
+  transition: stroke-dashoffset 1.5s ease-in-out;
+  animation: drawCircle 2s ease-in-out forwards;
+}
+
+.circular-progress .stat-number,
+.circular-progress .stat-status {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+/* Card 1 - Total Papers (Blue/Cyan theme) */
+.user-stat-card:nth-child(1) {
+  background: white;
+}
+
+.user-stat-card:nth-child(1)::before {
+  background: linear-gradient(90deg, #06b6d4, #0891b2);
+}
+
+.user-stat-card:nth-child(1) .stat-icon {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+  color: white;
+}
+
+.user-stat-card:nth-child(1) .progress-circle-bg {
+  stroke: #e6fffa;
+}
+
+.user-stat-card:nth-child(1) .progress-circle {
+  stroke: #06b6d4;
+  stroke-dashoffset: 157; /* 50% progress */
+}
+
+.user-stat-card:nth-child(1) .stat-number {
+  color: #06b6d4;
+}
+
+/* Card 2 - Rejected Papers (Orange/Red theme) */
+.user-stat-card:nth-child(2) {
+  background: white;
+}
+
+.user-stat-card:nth-child(2)::before {
+  background: linear-gradient(90deg, #f97316, #ea580c);
+}
+
+.user-stat-card:nth-child(2) .stat-icon {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: white;
+}
+
+.user-stat-card:nth-child(2) .progress-circle-bg {
+  stroke: #fff7ed;
+}
+
+.user-stat-card:nth-child(2) .progress-circle {
+  stroke: #f97316;
+  stroke-dashoffset: 235; /* 25% progress */
+}
+
+.user-stat-card:nth-child(2) .stat-number {
+  color: #f97316;
+}
+
+/* Card 3 - Approved Papers (Green theme) */
+.user-stat-card:nth-child(3) {
+  background: white;
+}
+
+.user-stat-card:nth-child(3)::before {
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+}
+
+.user-stat-card:nth-child(3) .stat-icon {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+}
+
+.user-stat-card:nth-child(3) .progress-circle-bg {
+  stroke: #f0fdf4;
+}
+
+.user-stat-card:nth-child(3) .progress-circle {
+  stroke: #22c55e;
+  stroke-dashoffset: 78; /* 75% progress */
+}
+
+.user-stat-card:nth-child(3) .stat-number {
+  color: #22c55e;
+}
+
+/* Card 4 - Pending Papers (Yellow theme) */
+.user-stat-card:nth-child(4) {
+  background: lwhite;
+}
+
+.user-stat-card:nth-child(4)::before {
+  background: linear-gradient(90deg, #eab308, #d97706);
+}
+
+.user-stat-card:nth-child(4) .stat-icon {
+  background: linear-gradient(135deg, #eab308, #d97706);
+  color: white;
+}
+
+.user-stat-card:nth-child(4) .progress-circle-bg {
+  stroke: #fffbeb;
+}
+
+.user-stat-card:nth-child(4) .progress-circle {
+  stroke: #eab308;
+  stroke-dashoffset: 282; /* 10% progress */
+}
+
+.user-stat-card:nth-child(4) .stat-status {
+  color: #eab308;
+}
+
+/* Animation for circular progress */
+@keyframes drawCircle {
+  from {
+    stroke-dashoffset: 314;
+  }
+  to {
+    stroke-dashoffset: var(--progress-offset);
+  }
+}
+
+.submissions-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.submissions-table thead {
+  background-color: rgba(37, 150, 190, 1);
+  color: #ffffff;
+}
+
+.submissions-table th,
+.submissions-table td {
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.submissions-table th {
+  font-weight: bold;
+}
+
+.submissions-table tbody tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+.submissions-table tbody tr:hover {
+  background-color: #e6e6ff;
+}
+
+.submissions-table td.pending {
+  color: #ff9800;
+  font-weight: 600;
+}
+
+.submissions-table td.approved {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.submissions-table td.rejected {
+  color: #f44336;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .submissions-table th,
+  .submissions-table td {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}
+
+
+
+/* Error message */
+.error-message {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .user-mobile-menu-toggle {
+    display: block;
+  }
+
+  .user-sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar-open {
+    transform: translateX(0);
+  }
+
+  .user-mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+  }
+
+  .user-main-content {
+    margin-left: 0;
+    padding: 1rem;
+    padding-top: 5rem;
+  }
+
+  .user-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .user-stat-card {
+    padding: 1.5rem;
+  }
+
+  .stat-number, .stat-status {
+    font-size: 2rem;
+  }
+
+  .submissions-table {
+    font-size: 0.875rem;
+  }
+
+  .submissions-table th,
+  .submissions-table td {
+    padding: 0.75rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-content-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .user-tab-content h2 {
+    font-size: 1.25rem;
+  }
+
+  .submissions-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* Animation for stat cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.user-stat-card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.user-stat-card:nth-child(1) { animation-delay: 0.1s; }
+.user-stat-card:nth-child(2) { animation-delay: 0.2s; }
+.user-stat-card:nth-child(3) { animation-delay: 0.3s; }
+.user-stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Loading state */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  color: #64748b;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #64748b;
+}
+
+.empty-state h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #475569;
+}
+
+
+
+/* =============================
+   Notifications Styling
+============================= */
+
+#user-notifications {
+  padding: 20px;
+}
+
+#user-notifications h2 {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Table container */
+.notification-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Header row */
+.notification-table thead {
+  background: rgba(37, 150, 190, 1);
+  color: #fff;
+}
+
+.notification-table th {
+  text-align: left;
+  padding: 14px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Table rows */
+.notification-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+  color: #444;
+  vertical-align: top;
+}
+
+/* Hover effect */
+.notification-table tbody tr:hover {
+  background: #f9fafb;
+  transition: background 0.2s ease;
+}
+
+/* Comment styling */
+.notification-table td.comment {
+  font-style: italic;
+  color: #374151;
+}
+
+/* Empty state */
+.no-notifications {
+  text-align: center;
+  color: #6b7280;
+  font-size: 1rem;
+  margin-top: 30px;
+}
+
+/* Sidebar badge */
+.notif-badge {
+  background: #ef4444;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 7px;
+  border-radius: 50%;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+

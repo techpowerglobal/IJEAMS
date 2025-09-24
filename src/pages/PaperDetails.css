@@ -1,0 +1,19 @@
+.paper-details-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  margin-top: 20%;
+}
+
+.paper-details-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.paper-details-container p {
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
