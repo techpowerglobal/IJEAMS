@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./CurrentIssue.css";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "https://ijaems.in/api";
 const CurrentIssue = () => {
   const [papers, setPapers] = useState([]);
   const [error, setError] = useState("");
