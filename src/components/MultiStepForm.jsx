@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./MultiStepForm.css";
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "https://ijaems.in/api";
 export default function MultiStepForm() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
