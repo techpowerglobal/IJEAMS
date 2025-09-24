@@ -1,35 +1,32 @@
 import React, { useState } from "react";
 
+const API_BASE = "https://ijaems.in/api"; // ✅ Use your live domain
+
 const Register = () => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
-  const [alertShown, setAlertShown] = useState(false); // prevent repeated alerts
+  const [alertShown, setAlertShown] = useState(false);
 
   // Password validation regex
   const strongPassword =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
 
     if (name === "password") {
-      // Show alert only once if invalid
       if (!strongPassword.test(value) && value.length > 0 && !alertShown) {
         window.alert(
           "⚠️ Password must be at least 8 characters and include uppercase, lowercase, number, and special character."
         );
-        setAlertShown(true); // avoid multiple alerts
+        setAlertShown(true);
       }
-
-      // Reset alert when password becomes valid
       if (strongPassword.test(value)) {
         setAlertShown(false);
       }
     }
   };
 
-  // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -38,17 +35,22 @@ const Register = () => {
       return;
     }
 
-    const res = await fetch("http://localhost:5000/api/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+    try {
+      const res = await fetch(`${API_BASE}/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    const data = await res.json();
-    alert(data.message);
+      const data = await res.json();
+      alert(data.message);
 
-    if (data.success) {
-      window.location.href = "/account";
+      if (data.success) {
+        window.location.href = "/account";
+      }
+    } catch (err) {
+      console.error("Registration error:", err);
+      alert("Something went wrong. Please try again later.");
     }
   };
 
