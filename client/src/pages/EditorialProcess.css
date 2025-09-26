@@ -1,0 +1,545 @@
+/* Editorial Process CSS - Clean Responsive Design */
+
+.aems-editorial-container {
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 40px 0;
+  position: relative;
+  margin-top: 3%;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.aems-editorial-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+}
+
+.aems-editorial-header {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 60px 40px;
+  background-color: rgba(37, 150, 190, 1);
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(37, 150, 190, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.aems-editorial-header::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background-color: rgba(171, 219, 227, 0.3);
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+
+.aems-editorial-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 2;
+}
+
+.aems-editorial-subtitle {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  font-weight: 400;
+  position: relative;
+  z-index: 2;
+}
+
+.aems-timeline-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.aems-timeline-container::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: rgba(37, 150, 190, 1);
+  transform: translateX(-50%);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.aems-timeline-marker {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 80px;
+  height: 80px;
+  background-color: rgba(171, 219, 227, 1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(37, 150, 190, 0.2);
+  border: 4px solid white;
+}
+
+.aems-step-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  position: relative;
+  z-index: 4;
+  border: 4px solid white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(37, 150, 190, 1);
+  box-shadow: 0 4px 15px rgba(37, 150, 190, 0.3);
+}
+
+.aems-timeline-item {
+  position: relative;
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  animation: slideInUp 0.6s ease forwards;
+}
+
+.aems-timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.aems-timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.aems-timeline-item:nth-child(3) { animation-delay: 0.3s; }
+.aems-timeline-item:nth-child(4) { animation-delay: 0.4s; }
+.aems-timeline-item:nth-child(5) { animation-delay: 0.5s; }
+.aems-timeline-item:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes slideInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.aems-timeline-content {
+  width: calc(50% - 60px);
+  position: relative;
+}
+
+.aems-timeline-item:nth-child(odd) .aems-timeline-content {
+  margin-right: auto;
+  padding-right: 40px;
+}
+
+.aems-timeline-item:nth-child(even) .aems-timeline-content {
+  margin-left: auto;
+  padding-left: 40px;
+}
+
+.aems-step-card {
+  background: #ffffff;
+  border: 2px solid rgba(171, 219, 227, 0.4);
+  border-radius: 20px;
+  padding: 35px 30px;
+  box-shadow: 0 8px 25px rgba(37, 150, 190, 0.08);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.aems-step-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background-color: rgba(37, 150, 190, 1);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.aems-step-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(37, 150, 190, 0.15);
+  border-color: rgba(37, 150, 190, 0.4);
+}
+
+.aems-step-card:hover::before {
+  transform: scaleX(1);
+}
+
+.aems-step-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.aems-step-icon {
+  font-size: 2rem;
+  background-color: rgba(171, 219, 227, 1);
+  color: rgba(37, 150, 190, 1);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(37, 150, 190, 0.1);
+  transition: all 0.3s ease;
+}
+
+.aems-step-card:hover .aems-step-icon {
+  transform: scale(1.05);
+  background-color: rgba(37, 150, 190, 1);
+  color: white;
+}
+
+.aems-step-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.aems-step-description {
+  font-size: 1rem;
+  color: #64748b;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.aems-editorial-footer {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.aems-notice-card {
+  background-color: rgba(171, 219, 227, 0.15);
+  border: 2px solid rgba(171, 219, 227, 0.5);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(37, 150, 190, 0.08);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.aems-notice-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: rgba(37, 150, 190, 1);
+  border-radius: 20px 20px 0 0;
+}
+
+.aems-notice-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(37, 150, 190, 0.12);
+  border-color: rgba(37, 150, 190, 0.4);
+  background-color: rgba(171, 219, 227, 0.2);
+}
+
+.aems-notice-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(37, 150, 190, 1);
+  margin-bottom: 15px;
+}
+
+.aems-notice-text {
+  font-size: 1.1rem;
+  color: #2d3748;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .aems-editorial-wrapper {
+    padding: 0 18px;
+  }
+  
+  .aems-timeline-container {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 768px) {
+  .aems-editorial-wrapper {
+    padding: 0 15px;
+  }
+  
+  .aems-editorial-header {
+    padding: 40px 25px;
+    margin-bottom: 50px;
+  }
+  
+  .aems-editorial-title {
+    font-size: 2.5rem;
+  }
+  
+  .aems-editorial-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  /* Mobile Timeline Layout */
+  .aems-timeline-container::before {
+    left: 30px;
+  }
+  
+  .aems-timeline-marker {
+    left: 30px;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .aems-step-number {
+    font-size: 1.4rem;
+    width: 40px;
+    height: 40px;
+    border: 3px solid white;
+  }
+  
+  .aems-timeline-content {
+    width: calc(100% - 80px);
+    margin-left: 80px !important;
+    padding-left: 25px !important;
+    padding-right: 0 !important;
+  }
+  
+  .aems-step-card {
+    padding: 25px 20px;
+  }
+  
+  .aems-step-title {
+    font-size: 1.2rem;
+  }
+  
+  .aems-step-description {
+    font-size: 0.95rem;
+  }
+  
+  .aems-step-icon {
+    font-size: 1.8rem;
+    padding: 12px;
+  }
+  
+  .aems-notice-card {
+    padding: 30px 25px;
+    margin: 0 15px;
+  }
+  
+  .aems-notice-title {
+    font-size: 1.3rem;
+  }
+  
+  .aems-notice-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .aems-editorial-wrapper {
+    padding: 0 12px;
+  }
+  
+  .aems-editorial-header {
+    padding: 30px 20px;
+    border-radius: 16px;
+  }
+  
+  .aems-editorial-title {
+    font-size: 2rem;
+  }
+  
+  .aems-editorial-subtitle {
+    font-size: 1rem;
+  }
+  
+  .aems-timeline-container::before {
+    left: 25px;
+  }
+  
+  .aems-timeline-marker {
+    left: 25px;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .aems-step-number {
+    font-size: 1.2rem;
+    width: 35px;
+    height: 35px;
+    border: 2px solid white;
+  }
+  
+  .aems-timeline-content {
+    width: calc(100% - 65px);
+    margin-left: 65px !important;
+    padding-left: 20px !important;
+  }
+  
+  .aems-timeline-item {
+    margin-bottom: 40px;
+  }
+  
+  .aems-step-card {
+    padding: 20px 15px;
+    border-radius: 16px;
+  }
+  
+  .aems-step-header {
+    gap: 12px;
+    margin-bottom: 15px;
+  }
+  
+  .aems-step-title {
+    font-size: 1.1rem;
+  }
+  
+  .aems-step-description {
+    font-size: 0.9rem;
+  }
+  
+  .aems-step-icon {
+    font-size: 1.5rem;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .aems-notice-card {
+    padding: 25px 20px;
+    border-radius: 16px;
+  }
+  
+  .aems-notice-title {
+    font-size: 1.2rem;
+  }
+  
+  .aems-notice-text {
+    font-size: 0.95rem;
+  }
+  
+  .aems-editorial-footer {
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 360px) {
+  .aems-editorial-wrapper {
+    padding: 0 10px;
+  }
+  
+  .aems-editorial-header {
+    padding: 25px 15px;
+  }
+  
+  .aems-editorial-title {
+    font-size: 1.8rem;
+  }
+  
+  .aems-timeline-container::before {
+    left: 20px;
+  }
+  
+  .aems-timeline-marker {
+    left: 20px;
+    width: 45px;
+    height: 45px;
+  }
+  
+  .aems-step-number {
+    font-size: 1.1rem;
+    width: 32px;
+    height: 32px;
+  }
+  
+  .aems-timeline-content {
+    width: calc(100% - 55px);
+    margin-left: 55px !important;
+    padding-left: 15px !important;
+  }
+  
+  .aems-step-card {
+    padding: 18px 12px;
+  }
+  
+  .aems-notice-card {
+    padding: 20px 15px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .aems-editorial-container {
+    background: white !important;
+  }
+  
+  .aems-editorial-header {
+    background: rgba(37, 150, 190, 1) !important;
+    color: white !important;
+    box-shadow: none !important;
+  }
+  
+  .aems-step-card,
+  .aems-notice-card {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    break-inside: avoid;
+  }
+  
+  .aems-timeline-container::before {
+    background: rgba(37, 150, 190, 1) !important;
+  }
+  
+  .aems-step-number {
+    background: rgba(37, 150, 190, 1) !important;
+    color: white !important;
+  }
+  
+  .aems-timeline-marker {
+    background: rgba(171, 219, 227, 1) !important;
+  }
+  
+  .aems-step-card::before,
+  .aems-notice-card::before {
+    display: none !important;
+  }
+}
+
+/* High specificity overrides */
+body .aems-editorial-container {
+  background-color: #ffffff !important;
+}
+
+/* Enhanced focus states for accessibility */
+.aems-step-card:focus-within {
+  outline: 2px solid rgba(37, 150, 190, 0.5);
+  outline-offset: 2px;
+}
