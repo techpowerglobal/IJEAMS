@@ -9,7 +9,7 @@ const path = require("path");
 
 const app = express();
 
-// ---------- Core middleware ----------
+// -------------------- Middleware --------------------
 app.use(express.json());
 app.use(
   cors({
@@ -18,24 +18,27 @@ app.use(
       "http://ijaems.in",
       "https://www.ijaems.in",
       "http://www.ijaems.in",
+      "http://localhost:3000", // keep for local dev React
     ],
     credentials: true,
   })
 );
+
+// Health check route
 app.get("/", (req, res) => {
   res.send("✅ API is running. Try /api/register or /api/login");
 });
 
-// ---------- MongoDB connection ----------
+// -------------------- MongoDB Connection --------------------
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => console.log("✅ MongoDB Connected"))
-  .catch((err) => console.log("DB Connection Error:", err));
+  .catch((err) => console.error("❌ DB Connection Error:", err));
 
-// ---------- User schema & model ----------
+// -------------------- User Schema --------------------
 const userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, unique: true },
@@ -44,7 +47,7 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model("User", userSchema);
 
-// ---------- Auth middleware ----------
+// -------------------- Auth Middleware --------------------
 function auth(req, res, next) {
   const hdr = req.headers.authorization || "";
   const token = hdr.startsWith("Bearer ") ? hdr.slice(7) : null;
@@ -52,14 +55,14 @@ function auth(req, res, next) {
 
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = payload; // { id, role }
+    req.user = payload; // { id, role, email }
     next();
   } catch (e) {
     return res.status(401).json({ success: false, message: "Invalid token" });
   }
 }
 
-// ---------- Auth Routes ----------
+// -------------------- Auth Routes --------------------
 // Register
 app.post("/api/register", async (req, res) => {
   const { name, email, password } = req.body;
@@ -75,21 +78,6 @@ app.post("/api/register", async (req, res) => {
         .status(500)
         .json({ success: false, message: "Error registering user", error: err.message });
     }
-  }
-});
-
-// List all users (admin only)
-app.get("/api/users", auth, async (req, res) => {
-  try {
-    if (req.user.role !== "admin") {
-      return res.status(403).json({ success: false, message: "Admin only" });
-    }
-
-    const users = await User.find().select("-password").lean(); // Exclude password
-    res.json({ success: true, data: users });
-  } catch (err) {
-    console.error("Fetch users error:", err);
-    res.status(500).json({ success: false, message: "Server error" });
   }
 });
 
@@ -111,7 +99,22 @@ app.post("/api/login", async (req, res) => {
   res.json({ success: true, message: `Welcome ${user.role}`, token, role: user.role });
 });
 
-// Create default admin (for demo)
+// List users (admin only)
+app.get("/api/users", auth, async (req, res) => {
+  try {
+    if (req.user.role !== "admin") {
+      return res.status(403).json({ success: false, message: "Admin only" });
+    }
+
+    const users = await User.find().select("-password").lean();
+    res.json({ success: true, data: users });
+  } catch (err) {
+    console.error("Fetch users error:", err);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+});
+
+// Create default admin (if not exists)
 async function createAdmin() {
   const admin = await User.findOne({ email: "admin@gmail.com" });
   if (!admin) {
@@ -122,41 +125,33 @@ async function createAdmin() {
       role: "admin",
       name: "Admin",
     });
-    console.log("👑 Default admin created (Email: admin@gmail.com, Password: admin)");
+    console.log("👑 Default admin created (Email: admin@gmail.com | Password: admin)");
   }
 }
 createAdmin();
 
-// ---------- Mount Submissions Route ----------
+// -------------------- Other Routes --------------------
 const submissionsRoute = require("./routes/submissions");
 app.use("/api/submissions", submissionsRoute);
-
 
 const uploadRoutes = require("./routes/upload");
 app.use("/api/upload", uploadRoutes);
 
-app.use("/uploads", express.static("public/uploads"));
-
-// ---------- Mount Comments Route ----------
 const commentRoutes = require("./routes/comment");
 app.use("/api/comments", commentRoutes);
 
+// File uploads
+app.use("/uploads", express.static("public/uploads"));
 
-// Serve static React files
+// -------------------- React Build Serve --------------------
 app.use(express.static(path.join(__dirname, "../dist")));
-
-// Catch-all (React Router)
-app.use( (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../dist", "index.html"));
 });
 
-// ---------- Start server ----------
-// ---------- Start server ----------
+// -------------------- Start Server --------------------
 const PORT = process.env.PORT || 5000;
-const HOST = "0.0.0.0"; // listen on all network interfaces
-
+const HOST = "0.0.0.0"; // so it works on server
 app.listen(PORT, HOST, () => {
   console.log(`🚀 Server running at http://${HOST}:${PORT}`);
 });
-
-
