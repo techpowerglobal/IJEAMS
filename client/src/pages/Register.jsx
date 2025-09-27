@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL;
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "/api";
 
 const Register = () => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [alertShown, setAlertShown] = useState(false);
 
-  // Password validation regex
   const strongPassword =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
@@ -36,11 +35,11 @@ const Register = () => {
     }
 
     try {
-         const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/register`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password }),
-    });
+      const res = await fetch(`${API_BASE}/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
       const data = await res.json();
       alert(data.message);
@@ -65,7 +64,6 @@ const Register = () => {
         required
         className="register-page-input"
       />
-
       <input
         type="email"
         name="email"
@@ -75,7 +73,6 @@ const Register = () => {
         required
         className="register-page-input"
       />
-
       <input
         type="password"
         name="password"
@@ -85,7 +82,6 @@ const Register = () => {
         required
         className="register-page-input"
       />
-
       <button type="submit" className="register-page-button">
         Register
       </button>
