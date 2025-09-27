@@ -145,7 +145,9 @@ app.use("/uploads", express.static("public/uploads"));
 
 // -------------------- React Build Serve --------------------
 app.use(express.static(path.join(__dirname, "../dist")));
-app.get(/.*/, (req, res) => {
+
+// Serve React index.html for all non-API routes
+app.get(/^(?!\/api).*$/, (req, res) => {
   res.sendFile(path.join(__dirname, "../dist", "index.html"));
 });
 // -------------------- Start Server --------------------
