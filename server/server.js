@@ -18,7 +18,7 @@ app.use(
       "http://ijaems.in",
       "https://www.ijaems.in",
       "http://www.ijaems.in",
-      "http://localhost:3000", // keep for local dev React
+      "http://localhost:5000", // keep for local dev React
     ],
     credentials: true,
   })
