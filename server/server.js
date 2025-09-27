@@ -145,10 +145,9 @@ app.use("/uploads", express.static("public/uploads"));
 
 // -------------------- React Build Serve --------------------
 app.use(express.static(path.join(__dirname, "../dist")));
-app.get("*", (req, res) => {
+app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, "../dist", "index.html"));
 });
-
 // -------------------- Start Server --------------------
 const PORT = process.env.PORT || 5000;
 const HOST = "0.0.0.0"; // so it works on server
