@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL;
+// Base URL from .env (example: http://localhost:5000/api or https://ijaems.in/api)
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
 
 const Register = () => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -36,24 +37,29 @@ const Register = () => {
     }
 
     try {
-          const res = await fetch(`${API_BASE}/register`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: form.name,
-        email: form.email,
-        password: form.password,
-      }),
-    });
+      const res = await fetch(`${API_BASE}/api/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          password: form.password,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error(`Server returned ${res.status}`);
+      }
+
       const data = await res.json();
-      alert(data.message);
+      alert(data.message || "Registration successful");
 
       if (data.success) {
         window.location.href = "/account";
       }
     } catch (err) {
       console.error("Registration error:", err);
-      alert("Something went wrong. Please try again later.");
+      alert("❌ Registration failed. Please try again later.");
     }
   };
 
