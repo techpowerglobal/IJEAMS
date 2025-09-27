@@ -55,7 +55,7 @@ const Login = () => {
         <input
           type="email"
           name="email"
-          placeholder="Enter your email"
+          placeholder="Enter your email id"
           value={form.email}
           onChange={handleChange}
           required
