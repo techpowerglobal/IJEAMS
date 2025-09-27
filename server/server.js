@@ -1,4 +1,3 @@
-// server.js
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
@@ -9,7 +8,7 @@ const path = require("path");
 
 const app = express();
 
-// -------------------- Middleware --------------------
+// Middleware
 app.use(express.json());
 app.use(
   cors({
@@ -18,51 +17,42 @@ app.use(
       "http://ijaems.in",
       "https://www.ijaems.in",
       "http://www.ijaems.in",
-      "http://localhost:5000", // keep for local dev React
     ],
     credentials: true,
   })
 );
 
-// Health check route
-app.get("/", (req, res) => {
-  res.send("✅ API is running. Try /api/register or /api/login");
-});
+// Health check
+app.get("/", (req, res) => res.send("API running"));
 
-// -------------------- MongoDB Connection --------------------
+// MongoDB
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("✅ MongoDB Connected"))
-  .catch((err) => console.error("❌ DB Connection Error:", err));
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error(err));
 
-// -------------------- User Schema --------------------
+// User schema
 const userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, unique: true },
   password: String,
-  role: { type: String, default: "user" }, // "user" or "admin"
+  role: { type: String, default: "user" },
 });
 const User = mongoose.model("User", userSchema);
 
-// -------------------- Auth Middleware --------------------
+// Auth middleware
 function auth(req, res, next) {
-  const hdr = req.headers.authorization || "";
-  const token = hdr.startsWith("Bearer ") ? hdr.slice(7) : null;
+  const token = (req.headers.authorization || "").replace("Bearer ", "");
   if (!token) return res.status(401).json({ success: false, message: "No token" });
 
   try {
-    const payload = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = payload; // { id, role, email }
+    req.user = jwt.verify(token, process.env.JWT_SECRET);
     next();
-  } catch (e) {
+  } catch {
     return res.status(401).json({ success: false, message: "Invalid token" });
   }
 }
 
-// -------------------- Auth Routes --------------------
 // Register
 app.post("/api/register", async (req, res) => {
   const { name, email, password } = req.body;
@@ -71,13 +61,8 @@ app.post("/api/register", async (req, res) => {
     await User.create({ name, email, password: hashedPassword });
     res.json({ success: true, message: "User registered successfully" });
   } catch (err) {
-    if (err.code === 11000) {
-      res.status(400).json({ success: false, message: "Email already exists" });
-    } else {
-      res
-        .status(500)
-        .json({ success: false, message: "Error registering user", error: err.message });
-    }
+    if (err.code === 11000) res.status(400).json({ success: false, message: "Email exists" });
+    else res.status(500).json({ success: false, message: err.message });
   }
 });
 
@@ -90,69 +75,16 @@ app.post("/api/login", async (req, res) => {
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) return res.status(400).json({ success: false, message: "Invalid credentials" });
 
-  const token = jwt.sign(
-    { id: user._id, role: user.role, email: user.email },
-    process.env.JWT_SECRET,
-    { expiresIn: "1h" }
-  );
+  const token = jwt.sign({ id: user._id, role: user.role, email: user.email }, process.env.JWT_SECRET, {
+    expiresIn: "1h",
+  });
 
   res.json({ success: true, message: `Welcome ${user.role}`, token, role: user.role });
 });
 
-// List users (admin only)
-app.get("/api/users", auth, async (req, res) => {
-  try {
-    if (req.user.role !== "admin") {
-      return res.status(403).json({ success: false, message: "Admin only" });
-    }
+// Serve React build
+app.use(express.static(path.join(__dirname, "../build")));
+app.get(/.*/, (req, res) => res.sendFile(path.join(__dirname, "../build/index.html")));
 
-    const users = await User.find().select("-password").lean();
-    res.json({ success: true, data: users });
-  } catch (err) {
-    console.error("Fetch users error:", err);
-    res.status(500).json({ success: false, message: "Server error" });
-  }
-});
-
-// Create default admin (if not exists)
-async function createAdmin() {
-  const admin = await User.findOne({ email: "admin@gmail.com" });
-  if (!admin) {
-    const hashedPassword = await bcrypt.hash("admin", 10);
-    await User.create({
-      email: "admin@gmail.com",
-      password: hashedPassword,
-      role: "admin",
-      name: "Admin",
-    });
-    console.log("👑 Default admin created (Email: admin@gmail.com | Password: admin)");
-  }
-}
-createAdmin();
-
-// -------------------- Other Routes --------------------
-const submissionsRoute = require("./routes/submissions");
-app.use("/api/submissions", submissionsRoute);
-
-const uploadRoutes = require("./routes/upload");
-app.use("/api/upload", uploadRoutes);
-
-const commentRoutes = require("./routes/comment");
-app.use("/api/comments", commentRoutes);
-
-// File uploads
-app.use("/uploads", express.static("public/uploads"));
-
-// -------------------- React Build Serve --------------------
-app.use(express.static(path.join(__dirname, "../dist")));
-
-// Serve React index.html for all non-API routes
-app.get(/^(?!\/api).*$/, (req, res) => {
-  res.sendFile(path.join(__dirname, "../dist", "index.html"));
-});
-// -------------------- Start Server --------------------
 const PORT = process.env.PORT || 5000;
-const HOST = "0.0.0.0"; // so it works on server
-app.listen(PORT, HOST, () => {
-  console.log(`🚀 Server running at http://${HOST}:${PORT}`);
-});
+app.listen(PORT, "0.0.0.0", () => console.log(`Server running on port ${PORT}`));
